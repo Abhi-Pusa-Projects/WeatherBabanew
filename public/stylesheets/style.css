@@ -1,8 +1,108 @@
 body {
-  padding: 50px;
+  background-color: #f8f8f8;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+#wrapper {
+    width: 100%;
+}
+
+.navbar{
+  margin-bottom: 0;
+}
+
+.subSide{
+  padding: 0px 0px 0px 20px;
+}
+
+.subSide>li{
+  float: right;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+    display: block;
+}
+
+.sidebar ul li a.active {
+    background-color: #eee;
+}
+
+.sidebar ul div li {
+    border-bottom: 1px solid #e7e7e7;
+    display: block;
+}
+
+.sidebar ul div li a.active {
+    background-color: #eee;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.axisSteelBlue text{
+  fill: steelblue;
+}
+
+.axisRed text{
+  fill: red;
+}
+
+.legend {
+  font: 16px sans-serif;
+  font-weight: bold;
+  text-anchor: start;
+}
+
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.grid path {
+      stroke-width: 0;
+}
+
+button{
+  width:100%;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
 }
