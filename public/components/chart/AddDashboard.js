@@ -4,7 +4,7 @@ var AddDashboard = React.createClass({
 
     addDashboard: function() {
     $.ajax({
-    url: 'http://localhost:3000/addnewdash',
+    url: 'https://abhinewrepo---weatherappnew.mybluemix.net/addnewdash',
     type: 'POST',
     data: {cityName:this.props.handler.city,lat:this.props.handler.lat,lng:this.props.handler.lng,ip:this.props.handler.ip}, // or $('#myform').serializeArray()
     success: function() {

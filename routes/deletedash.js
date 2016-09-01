@@ -5,7 +5,7 @@ var cityModel  = require('./citymodule');
 
 router.post('/',function(req,res,next){
 
-    mongoose.connect("mongodb://127.0.0.1:27017/cityDatabase");
+  mongoose.connect('mongodb://spburli25:102burli@ds019906.mlab.com:19906/citydatabase');
     
     cityModel.remove(req.body,function(err){
       if(!err){
