@@ -4,7 +4,7 @@ var DeleteDashboard = React.createClass({
 
     deleteDashboard: function() {
     $.ajax({
-    url: 'https://abhinewrepo---weatherappnew.mybluemix.net/deletedash',
+    url:'http://localhost:3000/deletedash',
     type: 'POST',
     data: {cityName:this.props.handler.city,ip:this.props.handler.ip}, // or $('#myform').serializeArray()
     success: function() { this.props.update();  }.bind(this)

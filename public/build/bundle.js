@@ -24058,12 +24058,12 @@
 	  },
 	  myLocation: function myLocation() {
 	    var _this = this;
-	    fetch('https://freegeoip.net/json/').then(function (response) {
+	    fetch('http://freegeoip.net/json/').then(function (response) {
 	      return response.json();
 	    }).then(function (responseJson) {
-	      var curURL = 'https://api.openweathermap.org/data/2.5/forecast/city?' + "lat=" + responseJson.latitude + "&" + "lon=" + responseJson.longitude + '&APPID=bfbfccb0b8cb44018d9282c12bb57409';
+	      var curURL = 'http://api.openweathermap.org/data/2.5/forecast/city?' + "lat=" + responseJson.latitude + "&" + "lon=" + responseJson.longitude + '&APPID=bfbfccb0b8cb44018d9282c12bb57409';
 	      _this.setState({
-	        ip: responseJson.query
+	        ip: responseJson.ip
 	      }, function () {
 	        localStorage.setItem('myLocation', JSON.stringify({
 	          url: curURL,
@@ -24080,8 +24080,9 @@
 	    this.handleChange(myLocation.url, myLocation.city, myLocation.lat, myLocation.lng);
 	  },
 	  updateDashboard: function updateDashboard() {
-	    var url1 = 'https://abhinewrepo---weatherappnew.mybluemix.net/getdash';
+	    var url1 = 'http://localhost:3000/getdash';
 	    this.defaultLocation();
+	    console.log(this.state.ip);
 	    $.post(url1, { ip: this.state.ip }, function (data) {
 	
 	      this.populatedashboard(data);
@@ -24096,7 +24097,7 @@
 	        cityName: json_data[i].cityName,
 	        lat: json_data[i].lat,
 	        lng: json_data[i].lng,
-	        url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + json_data[i].lat + "&" + "lon=" + json_data[i].lng + "&appid=14486129fdee1bec5bae028e7c3e3d2b"
+	        url: "http://api.openweathermap.org/data/2.5/forecast?lat=" + json_data[i].lat + "&" + "lon=" + json_data[i].lng + "&appid=14486129fdee1bec5bae028e7c3e3d2b"
 	      };
 	      dashboardItems.push(React.createElement(DashboardItem, { dashboardItemDetails: dashboardItemDetails, handle: this.handleChange }));
 	    }
@@ -24383,10 +24384,11 @@
 	
 	  addDashboard: function addDashboard() {
 	    $.ajax({
-	      url: 'https://abhinewrepo---weatherappnew.mybluemix.net/addnewdash',
+	      url: 'http://localhost:3000/addnewdash',
 	      type: 'POST',
 	      data: { cityName: this.props.handler.city, lat: this.props.handler.lat, lng: this.props.handler.lng, ip: this.props.handler.ip }, // or $('#myform').serializeArray()
 	      success: function () {
+	        console.log("IS success?");
 	        this.props.update();
 	      }.bind(this)
 	    });
@@ -24434,7 +24436,7 @@
 	
 	  deleteDashboard: function deleteDashboard() {
 	    $.ajax({
-	      url: 'https://abhinewrepo---weatherappnew.mybluemix.net/deletedash',
+	      url: 'http://localhost:3000/deletedash',
 	      type: 'POST',
 	      data: { cityName: this.props.handler.city, ip: this.props.handler.ip }, // or $('#myform').serializeArray()
 	      success: function () {

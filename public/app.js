@@ -39,12 +39,12 @@ var App = React.createClass({
     },
     myLocation: function(){
       var _this = this;
-       fetch('https://freegeoip.net/json/')
+       fetch('http://freegeoip.net/json/')
         .then((response) => response.json())
         .then((responseJson) => {
-          var curURL = 'https://api.openweathermap.org/data/2.5/forecast/city?'+"lat=" + responseJson.latitude + "&" + "lon=" + responseJson.longitude +'&APPID=bfbfccb0b8cb44018d9282c12bb57409';
+          var curURL = 'http://api.openweathermap.org/data/2.5/forecast/city?'+"lat=" + responseJson.latitude + "&" + "lon=" + responseJson.longitude +'&APPID=bfbfccb0b8cb44018d9282c12bb57409';
           _this.setState({
-            ip: responseJson.query
+            ip: responseJson.ip
           },function(){
           localStorage.setItem('myLocation',JSON.stringify({
               url:curURL,
@@ -61,7 +61,7 @@ var App = React.createClass({
         this.handleChange(myLocation.url,myLocation.city, myLocation.lat, myLocation.lng );
       },
       updateDashboard: function(){
-        var url1 = 'https://abhinewrepo---weatherappnew.mybluemix.net/getdash';
+        var url1 = 'http://localhost:3000/getdash';
         this.defaultLocation();
         $.post(url1,{ip:this.state.ip},function(data){
 
@@ -77,7 +77,7 @@ var App = React.createClass({
             cityName:json_data[i].cityName,
             lat:json_data[i].lat,
             lng:json_data[i].lng,
-            url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + json_data[i].lat + "&" + "lon=" + json_data[i].lng + "&appid=14486129fdee1bec5bae028e7c3e3d2b"
+            url: "http://api.openweathermap.org/data/2.5/forecast?lat=" + json_data[i].lat + "&" + "lon=" + json_data[i].lng + "&appid=14486129fdee1bec5bae028e7c3e3d2b"
         }
           dashboardItems.push(<DashboardItem dashboardItemDetails={dashboardItemDetails} handle={this.handleChange}/>);
         }

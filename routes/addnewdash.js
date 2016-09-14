@@ -5,8 +5,7 @@ var CityModel = require('./citymodule');
 
 router.post('/',function(req,res,next){
   var flag =0;
-
-  mongoose.connect('mongodb://spburli25:102burli@ds019906.mlab.com:19906/citydatabase');
+  mongoose.connect('mongodb://127.0.0.1:27017/cityDatabase');
   var newCity = CityModel(req.body);
   CityModel.find({ip:req.body.ip,cityName:req.body.cityName},function(err,data){
     if(err){
@@ -43,7 +42,7 @@ router.post('/',function(req,res,next){
       }
       else
       {
-      
+
         mongoose.connection.close();
         res.end("data is already available");
       }
